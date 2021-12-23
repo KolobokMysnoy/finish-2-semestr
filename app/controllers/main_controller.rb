@@ -33,7 +33,6 @@ class MainController < ApplicationController
     to_return=[]
     
     if indicator=="true"
-      p "Show curr_user"
       Post.all.each do |post|
         
         

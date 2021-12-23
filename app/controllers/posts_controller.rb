@@ -22,7 +22,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(**post_params,user_id: current_user.id)
-
+    
     respond_to do |format|
       if @post.save
         format.html { redirect_to post_url(@post), notice: t(".pst") }

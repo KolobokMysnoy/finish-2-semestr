@@ -29,7 +29,6 @@ class IntTest < ActionDispatch::IntegrationTest
 
   test "new user" do
     # create user
-    user= User.new()
     post '/users', params: {user: {username: '22', password: '22', password_confirmation: '22'}}
     id=User.find_by(username: '22').id
     assert_redirected_to "/en/users/#{id}"

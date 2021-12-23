@@ -22,7 +22,6 @@ class UsersController < ApplicationController
 
   # POST /users or /users.json
   def create
-    p params
     @user = User.new(user_params)
     
     respond_to do |format|
@@ -53,7 +52,7 @@ class UsersController < ApplicationController
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
-    f
+    
     respond_to do |format|
       format.html { redirect_to users_url, notice: t('.usr') }
       format.json { head :no_content }
