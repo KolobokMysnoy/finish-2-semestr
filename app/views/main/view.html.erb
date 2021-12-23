@@ -1,0 +1,48 @@
+<%= link_to t(".post"), new_post_url %>
+
+
+<script>
+    const url=location.protocol+'//'+location.host+'/show.json?what_to_show='
+    function send_query() {
+        const param = encodeURIComponent(
+            document.getElementById('what_to_show').checked)   
+        
+        const xhr=new XMLHttpRequest()
+        xhr.open('GET', url+param)
+
+        xhr.onload = ()=> { 
+            show_result(JSON.parse(xhr.response))
+        }
+        xhr.send()
+    }
+    
+    function show_result(data){
+        const result = document.getElementById("result")
+        result.innerHTML=""
+        console.log(data)
+        local_data=data.value
+        local_data.forEach(post => {
+            tb=document.createElement('table')
+            tit=document.createElement('th')
+            bod=document.createElement('tr')
+            auti=document.createElement('tr')
+            
+            tit.innerText=post.title
+            bod.innerText=post.bod
+            auti.innerText=post.user
+                    
+            // TODO Create table css
+            tb.append(tit,bod,auti,document.createElement('br'))
+
+            result.append(tb)
+
+        });
+    }
+</script>
+
+<br>
+<label> <%= t(".what_to_show") %> <%= check_box_tag (:what_to_show) %> </label>
+<br>
+
+<button class='btn btn-success' onclick="send_query()"><%= t".but_set"%></button> 
+<div id='result'></div>

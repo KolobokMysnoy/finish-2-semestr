@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= t(".post") %></h1>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+    <p>
+      <%= link_to t(".show"), post %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to t(".reg"), new_post_path %>
+<%= link_to t(".main"), root_url %>

@@ -1,0 +1,11 @@
+<h1><%=(t(".edit")) %></h1>
+
+<%= render "form", user: @user %>
+
+<br>
+
+<div>
+  <%= link_to (t(".show")), @user %> |
+  <%= link_to (t(".back")), users_path %>
+  <%= link_to (t(".main")), root_url %>
+</div>

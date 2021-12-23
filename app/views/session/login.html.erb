@@ -1,0 +1,8 @@
+<p> <%=t(".log")%> </p>
+<%= form_with url: session_create_url, methdo: :post, local:true do |f| %>
+    <%= f.text_field :username, required: true, class: 'form-control'%>
+    <%= f.password_field :password, required: true, class: 'form-control'%>
+    <%= f.submit :password, required: true , value: t(".pas"),class: 'btn btn-success'%>
+<% end %>   
+
+<<%= link_to t(".reg"), new_user_path %>>
