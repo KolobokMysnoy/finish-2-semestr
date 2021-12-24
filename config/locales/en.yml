@@ -2,6 +2,8 @@ en:
   application:
     fin: "Project"
     signout: "Logout"
+    enn: "En"
+    ruu: "Rus"
   # Login
   session:
     login:

@@ -1,11 +1,13 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   # setup do
   #   # @user = users(:one)
   #   @user= User.create(username:"21", password:"21", password_confirmation:"21")
   #   sign_in @user
-  # end   
+  # end
 
   # test "should get index" do
   #   get users_url

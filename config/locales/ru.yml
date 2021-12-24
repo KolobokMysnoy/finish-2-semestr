@@ -2,6 +2,8 @@ ru:
   application:
     fin: "Проект"
     signout: "Выйти из аккаунта"
+    enn: "Английский"
+    ruu: "Русский"
   # Login
   session:
     login:

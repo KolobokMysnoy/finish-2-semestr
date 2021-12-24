@@ -1,18 +1,20 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class IntTest < ActionDispatch::IntegrationTest
   setup do
-    @user= User.create(username:"21", password:"21", password_confirmation:"21")
-    post '/session/create', params: {username: "21", password: "21"}
-  end  
+    @user = User.create(username: '21', password: '21', password_confirmation: '21')
+    post '/session/create', params: { username: '21', password: '21' }
+  end
 
-  test "language" do
+  test 'language' do
     # with russian language
-    get root_url, params: {locale: 'ru'}
+    get root_url, params: { locale: 'ru' }
     assert_response :success
 
     # with english language
-    get root_url, params: {locale: 'en'}
+    get root_url, params: { locale: 'en' }
     assert_response :success
   end
 
@@ -27,10 +29,10 @@ class IntTest < ActionDispatch::IntegrationTest
     assert_redirected_to session_login_url
   end
 
-  test "new user" do
+  test 'new user' do
     # create user
-    post '/users', params: {user: {username: '22', password: '22', password_confirmation: '22'}}
-    id=User.find_by(username: '22').id
+    post '/users', params: { user: { username: '22', password: '22', password_confirmation: '22' } }
+    id = User.find_by(username: '22').id
     assert_redirected_to "/en/users/#{id}"
 
     # get root
@@ -38,13 +40,13 @@ class IntTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'create post' do 
+  test 'create post' do
     # create post
-    post= Post.new
-    post '/posts', params: {post: { head:"Test head", body: "Test body"}}
-    assert_not_nil Post.find_by(head:"Test head")
+    post = Post.new
+    post '/posts', params: { post: { head: 'Test head', body: 'Test body' } }
+    assert_not_nil Post.find_by(head: 'Test head')
 
-    # created by 
-    assert_equal Post.find_by(head:"Test head").user.username, "21"
+    # created by
+    assert_equal Post.find_by(head: 'Test head').user.username, '21'
   end
 end

@@ -1,11 +1,12 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   # setup do
   #   @user= User.create(username:"21", password:"21", password_confirmation:"21")
   #   post '/session/create', params: {username: "21", password: "21"}
-  # end  
-
+  # end
 
   # test "should get index" do
   #   get posts_url
@@ -47,5 +48,4 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   #   assert_redirected_to posts_url
   # end
-  
 end

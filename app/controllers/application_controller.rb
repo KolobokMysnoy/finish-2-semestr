@@ -1,31 +1,30 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
-    include SessionHelper
+  include SessionHelper
 
-    around_action :switch_locale 
-    before_action :require_login
-    
-    
+  around_action :switch_locale
+  before_action :require_login
 
-    private 
+  private
 
-    def require_login
-        redirect_to session_login_url unless signed_in?
-    end
+  def require_login
+    redirect_to session_login_url unless signed_in?
+  end
 
-    
+  def switch_locale(&action)
+    locale = locale_from_url || I18n.default_locale
+    I18n.with_locale locale, &action
+  end
 
-    def switch_locale(&action)
-        locale= locale_from_url || I18n.default_locale
-        I18n.with_locale locale, &action
-    end
+  def locale_from_url
+    locale = params[:locale]
+    return locale if I18n.available_locales.map(&:to_s).include?(locale)
 
-    def locale_from_url
-        locale= params[:locale]
-        return locale if I18n.available_locales.map(&:to_s).include?(locale)
-        nil
-    end
+    nil
+  end
 
-    def default_url_options
-        {locale: I18n.locale}
-    end
+  def default_url_options
+    { locale: I18n.locale }
+  end
 end
